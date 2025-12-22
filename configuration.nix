@@ -35,6 +35,7 @@
 #   useXkbConfig = true; # use xkb.options in tty.
 # };
 
+# Just a dummy commnet here.
 # Enable the X11 windowing system.
 	services.xserver = {
 		enable = true;
