@@ -30,4 +30,5 @@ in
     };
     root.hashedPassword = readPasswdHash "root";
   };
+users.groups.royalblue = {};
 }

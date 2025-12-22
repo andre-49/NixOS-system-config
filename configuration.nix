@@ -10,21 +10,23 @@
   boot.loader.systemd-boot.enable = true; # bootloader
     boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Bill Evans"; # Define your hostname.
+  networking.hostName = "BillEvans"; # Hostname.
     networking.networkmanager.enable = true;
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Africa/Kigali";
 # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
+# i18n.defaultLocale = "en_US.UTF-8";
+# console = {
+#   font = "Lat2-Terminus16";
+#   keyMap = "us";
+#   useXkbConfig = true; # use xkb.options in tty.
+# };
 
 # Desktop Environment
-  displayManager.sddm.enable = true;
-  displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
 
