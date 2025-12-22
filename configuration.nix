@@ -4,6 +4,7 @@
   imports =
     [
     ./hardware-configuration.nix
+      ./modules/users.nix
     ];
 
   boot.loader.systemd-boot.enable = true; # bootloader
@@ -47,22 +48,12 @@
           otherlayer = {};
         };
         extraConfig = ''
- Any extra config goes here, like like whaat you might copy/past
+          Any extra config goes here, like like what you might copy/paste
           '';
       };
     };
   };
 
-  users.users = {
-    user1 = {
-      name = "Tadd's Delight";
-      group = "A Jazz Standard";
-      isNormalUser = true;
-      description = "The main user";
-      extraGroups = [ "wheel" "networkmanager" ];
-      shell = pkgs.zsh;
-    };
-  };
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -91,7 +82,7 @@
 
 # Copy the NixOS configuration file and link it from the resulting system
 # (/run/current-system/configuration.nix). This is useful in case you dlt config.nix
- system.copySystemConfiguration = true;
+  system.copySystemConfiguration = true;
 
 # This option defines the first version of NixOS you have installed on this particular machine,
 # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
