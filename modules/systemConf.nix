@@ -42,6 +42,10 @@
         settings = {
           main = {
             capslock = "layer(control)";
+            compose = "leftcontrol";
+          };
+          control = {
+            space = "C-tab";
           };
           otherlayer = {};
         };

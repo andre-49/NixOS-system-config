@@ -14,10 +14,12 @@
       fzf
       fd
       zsh
-oh-my-zsh
+      oh-my-zsh
       neovim
       yazi
       lxqt.lxqt-policykit
+      wl-clipboard
+      keyd
 
 
 # Secondary

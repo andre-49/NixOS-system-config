@@ -241,14 +241,14 @@ bind = $mainMod, Escape, killactive,
 
 
 # Screenshot taking
-     bind = $mainMod , Insert, exec, ~/.scripts/ss.sh
-     bind = $mainMod SHIFT, Insert, exec, ~/.scripts/ss2.sh
+     bind = $mainMod , I, exec, grim -g "$(slurp)" - | magick - -shave 1x1 PNG:- | wl-copy
+     bind = $mainMod SHIFT, I, exec, grim -g "$(slurp)" - | magick - -shave 1x1 PNG:- | swappy -f -
 
 # Volume Control with pactl
-#bind = , XF86AudioLowerVolume, exec, pactl set-sink-volume 0 7%-
-#bind = , XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +7%
-     bindel = , F6, exec, pactl set-sink-volume 0 -7%
-     bindel = , F7, exec, pactl set-sink-volume 0 +7%
+     bindel = , XF86AudioLowerVolume, exec, pactl set-sink-volume 0 7%-
+     bindel = , XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +7%
+#bindel = , F6, exec, pactl set-sink-volume 0 -7%
+#bindel = , F7, exec, pactl set-sink-volume 0 +7%
 
 # Binds to Reload
      bind = $mainMod SHIFT, W, exec, ~/.scripts/theme-all/setheme.sh
@@ -320,13 +320,13 @@ bind = $mainMod, Escape, killactive,
 
 # Example windowrule v2
 #windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-     # windowrule = float, kitty
-     # windowrule = size 1460 875, kitty
-     # windowrule =  move 230 83, kitty
-     #
+# windowrule = float, kitty
+# windowrule = size 1460 875, kitty
+# windowrule =  move 230 83, kitty
+#
      windowrulev2 = float, class:^(org.strawberrymusicplayer.strawberry)$
-     windowrulev2 = size 820 530, class:^(org.strawberrymusicplayer.strawberry)$
-     windowrulev2 = move 12 9, class:^(org.strawberrymusicplayer.strawberry)$
+                                   windowrulev2 = size 820 530, class:^(org.strawberrymusicplayer.strawberry)$
+                                                                        windowrulev2 = move 12 9, class:^(org.strawberrymusicplayer.strawberry)$
 #windowrule = float,nemo 
 #windowrule = size 620 450,nemo 
 #windowrule =  move 8 8,nemo 
@@ -335,9 +335,9 @@ bind = $mainMod, Escape, killactive,
 # windowrulev2 = suppressevent maximize, class:.*
 
 # Fix some dragging issues with XWayland
-     windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
-                                     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+                                                                                                          windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+                                                                                                                                          exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-    '';
-  };
+                                                                                                                                          '';
+                                                                                                                                          };
 }
