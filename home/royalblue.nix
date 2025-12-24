@@ -5,5 +5,6 @@
   imports = [
     ./royalblue/git.nix
       ./royalblue/hyprland.nix
+      ./programs/wallpaper.nix
   ];
 }
