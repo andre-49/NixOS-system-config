@@ -50,6 +50,7 @@ exec-once = /usr/bin/lxpolkit & #lx-session
 #exec-once = ~/.scripts/bgSet.sh & ~/.config/waybar/run.sh # wallpaper and pywal
 exec-once = ~/.scripts/theme-all/setheme.sh
 exec-once = keymapper &
+exec-once = hyprctl setcursor material-cursors 24
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -59,6 +60,7 @@ exec-once = keymapper &
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
+env = XCURSOR_THEME,material-cursors
 
 
 #####################

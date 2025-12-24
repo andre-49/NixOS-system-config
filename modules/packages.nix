@@ -48,5 +48,10 @@
       slurp
       swappy
       imagemagick
+      bibata-cursors
+      flat-remix-icon-theme
+      gnome-themes-extra
+      adwaita-qt
+      hicolor-icon-theme 
       ];
 }

@@ -19,7 +19,8 @@ in
       la = "eza -aa --icons --color=always --group-directories-first";
       l = "eza -F --icons --color=always --group-directories-first";
       nixswitch = "sudo nixos-rebuild switch";
-      nixtest = "sudo nixos-rebuild dry-build";
+      nixtest = "sudo nixos-rebuild test";
+      nixdry = "sudo nixos-rebuild dry-build";
       nixbuild = "sudo nixos-rebuild build";
       nixgc = "sudo nix-collect-garbage -d";
       nixclean = "sudo nix-collect-garbage -d && sudo nix-store --optimise";

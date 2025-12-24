@@ -8,5 +8,6 @@
       ./programs/wallpaper.nix
       ./royalblue/kitty.nix
       ./royalblue/zsh.nix
+      ./royalblue/theme.nix
   ];
 }

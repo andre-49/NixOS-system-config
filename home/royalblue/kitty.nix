@@ -7,7 +7,7 @@
     
     settings = {
       font_family = "DejaVuSansM ";
-      font_size = 16.0;
+      font_size = 20.0;
       background_opacity = 0.50;
       window_padding_width = 10.0;
       cursor_shape = "block";
