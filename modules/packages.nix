@@ -9,7 +9,12 @@
       git
       htop
       eza
+      ripgrep
+      bat
+      fzf
+      fd
       zsh
+oh-my-zsh
       neovim
       yazi
       lxqt.lxqt-policykit

@@ -6,5 +6,7 @@
     ./royalblue/git.nix
       ./royalblue/hyprland.nix
       ./programs/wallpaper.nix
+      ./royalblue/kitty.nix
+      ./royalblue/zsh.nix
   ];
 }
