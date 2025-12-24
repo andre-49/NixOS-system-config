@@ -25,7 +25,7 @@ ff = "fastfetch";
       nixbuild = "sudo nixos-rebuild build";
       nixgc = "sudo nix-collect-garbage -d";
       nixclean = "sudo nix-collect-garbage -d && sudo nix-store --optimise";
-      grep = "ripgrep --color=auto";
+      grep = "rg --color=auto";
       ip = "ip --color=auto";
       df = "df -h";
       du = "du -h";
