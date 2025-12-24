@@ -15,7 +15,7 @@ in
 {
   users.users = {
     royalblue = {
-      description = "Blues for a Hip King";
+      description = "Royal Blue";
       group = "royalblue";
       isNormalUser = true;
       extraGroups = [

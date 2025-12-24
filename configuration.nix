@@ -4,83 +4,17 @@
   imports =
     [
     ./hardware-configuration.nix
+      ./modules/systemConf.nix
+      ./modules/packages.nix
       ./modules/users.nix
+      <home-manager/nixos>
     ];
 
-  boot.loader.systemd-boot.enable = true; # bootloader
-    boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "BillEvans"; # Hostname.
-    networking.networkmanager.enable = true;
-  nixpkgs.config.allowUnfree = true;
-  time.timeZone = "Africa/Kigali";
-# Select internationalisation properties.
-# i18n.defaultLocale = "en_US.UTF-8";
-# console = {
-#   font = "Lat2-Terminus16";
-#   keyMap = "us";
-#   useXkbConfig = true; # use xkb.options in tty.
-# };
-
-# Desktop Environment
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.royalblue = import ./home/royalblue.nix;
   };
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
-
-# Enable CUPS to print documents.
-# services.printing.enable = true;
-
-# Sound
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = ["*"];
-        settings = {
-          main = {
-            capslock = "layer(control)";
-          };
-          otherlayer = {};
-        };
-        extraConfig = ''
-          Any extra config goes here, like like what you might copy/paste
-          '';
-      };
-    };
-  };
-
-
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      wget
-      kitty
-      firefox
-      git
-      curl
-      waybar
-      nwg-look
-      btop
-      fastfetch
-      keymapper
-      rofi
-      neovim
-      wlogout
-      brightnessctl
-      obsidian
-      pywal
-      pywalfox-native
-      eza
-      swaybg
-      zsh
-      ];
-
 
 # Copy the NixOS configuration file and link it from the resulting system
 # (/run/current-system/configuration.nix). This is useful in case you dlt config.nix

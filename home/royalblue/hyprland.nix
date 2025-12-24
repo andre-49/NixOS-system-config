@@ -1,0 +1,343 @@
+{ config, lib, pkgs, ... }:
+
+{
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    # All config as plain text in extraConfig
+    extraConfig = ''
+
+# Create your files separately and then link them to this file like this:
+# source = ~/.config/hypr/myColors.conf
+
+
+################
+### MONITORS ###
+################
+
+# See https://wiki.hyprland.org/Configuring/Monitors/
+# monitor=,preferred,auto,auto
+monitor = eDP-1, 1920x1080@60.03800, 0x0, 1
+
+###################
+##  COLOR SCHEME ##
+###################
+#source = ~/.cache/wal/colors-hyprland.conf
+
+###################
+### MY PROGRAMS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+
+# Set programs that you use
+$terminal = kitty
+$music = strawberry
+$fileManager = nemo
+$menu = rofi -show drun
+$browser = firefox
+
+
+#################
+### AUTOSTART ###
+#################
+
+# Autostart necessary processes (like notifications daemons, status bars, etc.)
+# Or execute your favorite apps at launch like this:
+
+exec-once = $terminal
+exec-once = /usr/bin/lxpolkit & #lx-session
+#exec-once = ~/.scripts/bgSet.sh & ~/.config/waybar/run.sh # wallpaper and pywal
+exec-once = ~/.scripts/theme-all/setheme.sh
+exec-once = keymapper &
+
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+
+
+#####################
+### LOOK AND FEEL ###
+#####################
+
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
+
+# https://wiki.hyprland.org/Configuring/Variables/#general
+general {
+    gaps_in = 3
+    gaps_out = 2
+    border_size = 2
+
+    # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+    #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+    col.active_border = rgba(433f3cee) 
+    col.inactive_border = rgba(b1b1b1ee)
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = true
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = false
+
+    layout = dwindle
+    # Attempting cursor hidding
+    #cursor_inactive_timeout = 3
+}
+
+# # https://wiki.hyprland.org/Configuring/Variables/#decoration
+# decoration {
+#     rounding = 5
+#     # Shadows
+#     # shadow {
+#     # enabled = true
+#     # color = $color7  #rgb(424242)
+#     # offset = 4 4
+#     # range = 0
+#     # } 
+#
+#     # Change transparency of focused and unfocused windows
+#     active_opacity = 1.0
+#     inactive_opacity = 1.0
+#
+#     #drop_shadow = true
+#     #shadow_range = 4
+#     #shadow_render_power = 3
+#     #col.shadow = rgba(1a1a1aee)
+#
+#     # https://wiki.hyprland.org/Configuring/Variables/#blur
+#     blur {
+#         enabled = true
+#         size = 3
+#         passes = 1
+#
+#         vibrancy = 0.1696
+#     }
+# }
+ decoration {
+# See https://wiki.hyprland.org/Configuring/Variables/ for more
+     rounding = 10
+         blur {
+             enabled = true
+                 size = 5
+                 passes = 1
+                 popups = true
+                 ignore_opacity = true
+         }
+     shadow {
+         enabled = true
+             render_power = 3
+             range = 4
+             color = rgba(1a1a1aee)
+     } 
+ } 
+
+# https://wiki.hyprland.org/Configuring/Variables/#animations
+animations {
+    enabled = true
+
+# Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+        animation = windows, 1, 7, myBezier
+        animation = windowsOut, 1, 7, default, popin 80%
+        animation = border, 1, 10, default
+        animation = borderangle, 1, 8, default
+        animation = fade, 1, 7, default
+        animation = workspaces, 1, 6, default
+}
+
+# See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+dwindle {
+    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = true # You probably want this
+        force_split = 2
+}
+
+# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+master {
+    new_status = master
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#misc
+misc {
+    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+                }
+
+
+#############
+### INPUT ###
+#############
+
+# https://wiki.hyprland.org/Configuring/Variables/#input
+                input {
+                kb_layout = us
+                kb_variant =
+                kb_model =
+                kb_options =
+                kb_rules =
+
+                follow_mouse = 1
+
+                sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+
+                touchpad {
+                    natural_scroll = true
+                }
+                }
+
+# https //wiki.hyprland.org/Configuring/Variables/#gestures
+gesture = 3, horizontal, workspace
+# gesture = 3, down, mod: ALT, close
+# gesture = 3, up, mod: SUPER, scale: 1.5, fullscreen
+# gesture = 3, left, scale: 1.5, float
+
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+device {
+    name = epic-mouse-v1
+        sensitivity = -0.5
+}
+
+
+###################
+### KEYBINDINGS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+$mainMod = SUPER # Sets "Windows" key as main modifier
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+# BINDS TO LAUNCH APPS
+bind = $mainMod, Q, exec, $terminal
+bind = $mainMod, W, exec, $browser
+bind = $mainMod, O, exec, obsidian
+bind = $mainMod, A, exec, code
+bind = $mainMod, M, exec, $music
+bind = $mainMod, C, exec, discord
+bind = $mainMod, N, exec, nicotine
+#-------------------------------------------
+bind = $mainMod, End, exec, wlogout
+bind = $mainMod, Escape, killactive,
+     bind = $mainMod SHIFT, Q, exec, ~/.scripts/killHypr.sh
+     bind = $mainMod SHIFT, Escape, exit,
+     bind = $mainMod, E, exec, $fileManager
+     bind = $mainMod, V, togglefloating,
+     bind = $mainMod, Space, exec, $menu
+     bind = $mainMod, P, pseudo, # dwindle
+     bind = $mainMod, D, togglesplit, # dwindle
+
+# Brightness Control with brightnessctl
+#bind = , XF86MonBrightnessDown ,exec, brightnessctl set 5%- 
+#bind = , XF86MonBrightnessUp   ,exec, brightnessctl set +5%
+     bindel = , F9, exec, brightnessctl set 5%-
+     bindel = , F10, exec, brightnessctl set +5%
+
+
+# Screenshot taking
+     bind = $mainMod , Insert, exec, ~/.scripts/ss.sh
+     bind = $mainMod SHIFT, Insert, exec, ~/.scripts/ss2.sh
+
+# Volume Control with pactl
+#bind = , XF86AudioLowerVolume, exec, pactl set-sink-volume 0 7%-
+#bind = , XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +7%
+     bindel = , F6, exec, pactl set-sink-volume 0 -7%
+     bindel = , F7, exec, pactl set-sink-volume 0 +7%
+
+# Binds to Reload
+     bind = $mainMod SHIFT, W, exec, ~/.scripts/theme-all/setheme.sh
+# Move focus with mainMod + arrow keys
+     bind = $mainMod, H, movefocus, l
+     bind = $mainMod, L, movefocus, r
+     bind = $mainMod, K, movefocus, u
+     bind = $mainMod, J, movefocus, d
+
+# Switch workspaces with mainMod + [0-9]
+     bind = $mainMod, 1, workspace, 1
+     bind = $mainMod, 2, workspace, 2
+     bind = $mainMod, 3, workspace, 3
+     bind = $mainMod, 4, workspace, 4
+     bind = $mainMod, 5, workspace, 5
+     bind = $mainMod, 6, workspace, 6
+     bind = $mainMod, 7, workspace, 7
+     bind = $mainMod, 8, workspace, 8
+     bind = $mainMod, 9, workspace, 9
+     bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+     bind = $mainMod SHIFT, 1, movetoworkspace, 1
+     bind = $mainMod SHIFT, 2, movetoworkspace, 2
+     bind = $mainMod SHIFT, 3, movetoworkspace, 3
+     bind = $mainMod SHIFT, 4, movetoworkspace, 4
+     bind = $mainMod SHIFT, 5, movetoworkspace, 5
+     bind = $mainMod SHIFT, 6, movetoworkspace, 6
+     bind = $mainMod SHIFT, 7, movetoworkspace, 7
+     bind = $mainMod SHIFT, 8, movetoworkspace, 8
+     bind = $mainMod SHIFT, 9, movetoworkspace, 9
+     bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Example special workspace (scratchpad)
+     bind = $mainMod, S, togglespecialworkspace, magic
+     bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+# Scroll through existing workspaces with mainMod + scroll
+     bind = $mainMod, mouse_down, workspace, e+1
+     bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+     bindm = $mainMod, mouse:272, movewindow
+     bindm = $mainMod, mouse:273, resizewindow
+
+# Laptop multimedia keys for volume and LCD brightness
+     bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+     bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+     bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+     bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+     bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+     bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+# Requires playerctl
+     bindl = , XF86AudioNext, exec, playerctl next
+     bindl = , XF86AudioPause, exec, playerctl play-pause
+     bindl = , XF86AudioPlay, exec, playerctl play-pause
+     bindl = , XF86AudioPrev, exec, playerctl previous
+
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+# See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
+
+# Example windowrule v1
+# windowrule = float, ^()$
+
+# Example windowrule v2
+#windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
+     # windowrule = float, kitty
+     # windowrule = size 1460 875, kitty
+     # windowrule =  move 230 83, kitty
+     #
+     windowrulev2 = float, class:^(org.strawberrymusicplayer.strawberry)$
+     windowrulev2 = size 820 530, class:^(org.strawberrymusicplayer.strawberry)$
+     windowrulev2 = move 12 9, class:^(org.strawberrymusicplayer.strawberry)$
+#windowrule = float,nemo 
+#windowrule = size 620 450,nemo 
+#windowrule =  move 8 8,nemo 
+
+# Ignore maximize requests from apps. You'll probably like this.
+# windowrulev2 = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+     windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+                                     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+    '';
+  };
+}
