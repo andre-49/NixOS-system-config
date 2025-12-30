@@ -46,11 +46,9 @@ $browser = firefox
 # Or execute your favorite apps at launch like this:
 
 exec-once = $terminal
+exec-once = waybar &
 exec-once = /usr/bin/lxpolkit & #lx-session
-#exec-once = ~/.scripts/bgSet.sh & ~/.config/waybar/run.sh # wallpaper and pywal
-exec-once = ~/.scripts/theme-all/setheme.sh
 exec-once = keymapper &
-exec-once = hyprctl setcursor material-cursors 24
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -168,8 +166,8 @@ master {
 
 # https://wiki.hyprland.org/Configuring/Variables/#misc
 misc {
-    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+    force_default_wallpaper = 1 # Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = true # If true disables the random hyprland logo / anime girl background. :(
                 }
 
 

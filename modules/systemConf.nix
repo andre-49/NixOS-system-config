@@ -20,6 +20,18 @@
     enable = true;
     pulse.enable = true;
   };
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;  # Turn on Bluetooth at boot
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
+  };
+
+# Optional: Bluetooth audio support
+  services.blueman.enable = true;
   services.keyd = {
     enable = true;
     keyboards = {
@@ -40,6 +52,18 @@
           '';
       };
     };
+  };
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+        dejavu_fonts
+        ubuntu-classic
+    ];
+
+    fontconfig.enable = true;
   };
   nix = {
     gc = {

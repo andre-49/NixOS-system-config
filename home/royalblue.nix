@@ -9,5 +9,10 @@
       ./royalblue/kitty.nix
       ./royalblue/zsh.nix
       ./royalblue/theme.nix
+      ./royalblue/waybar.nix
+#      ./royalblue/fonts.nix
+      ./royalblue/hyprlock.nix
   ];
+  home.file.".config/wal".source = ./royalblue/wal;
+  home.file.".config/wlogout".source = ./royalblue/wlogout;
 }

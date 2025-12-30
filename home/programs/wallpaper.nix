@@ -2,7 +2,7 @@
 { config, pkgs, ... }:
 
 let
-wallpaper = "${config.home.homeDirectory}/Pictures/wallpaper/wallpaper.png";
+wallpaper = "${config.home.homeDirectory}/Pictures/wallpaper/ninja.png";
 
 setWallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
 # Set wallpaper
