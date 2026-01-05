@@ -87,9 +87,10 @@
       oh-my-zsh
       neovim
       yazi
-      lxqt.lxqt-policykit
+      hyprpolkitagent
       wl-clipboard
       keyd
+      grub2
 
 
 # Secondary
@@ -105,6 +106,9 @@
       qbittorrent
       strawberry
       vscode
+      kdePackages.partitionmanager
+      gparted
+      gnome-disk-utility
 
 # UI related
       waybar
@@ -124,5 +128,7 @@
       adwaita-qt
       hicolor-icon-theme 
 
+      os-prober
+      efibootmgr
       ];
 }

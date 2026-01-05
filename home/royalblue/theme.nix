@@ -2,7 +2,6 @@
 { config, pkgs, ... }:
 
 {
-  # Cursor theme
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
@@ -11,7 +10,6 @@
     x11.enable = true;
   };
 
-  # GTK theme
   gtk = {
     enable = true;
     theme = {
@@ -19,7 +17,6 @@
       package = pkgs.gnome-themes-extra;
     };
     
-    # Tela Purple icon theme
     iconTheme = {
       name = "Flat-Remix-Green-Dark";
       package = pkgs.flat-remix-icon-theme;
@@ -31,7 +28,6 @@
     };
   };
 
-  # QT theme
   qt = {
     enable = true;
     platformTheme.name = "adwaita";
@@ -41,7 +37,6 @@
     };
   };
 
-  # Environment variables
   home.sessionVariables = {
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "24";

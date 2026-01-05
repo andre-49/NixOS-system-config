@@ -22,7 +22,7 @@ monitor = eDP-1, 1920x1080@60.03800, 0x0, 1
 ###################
 ##  COLOR SCHEME ##
 ###################
-#source = ~/.cache/wal/colors-hyprland.conf
+source = ~/.cache/wal/colors-hyprland.conf
 
 ###################
 ### MY PROGRAMS ###
@@ -47,7 +47,7 @@ $browser = firefox
 
 exec-once = $terminal
 exec-once = waybar &
-exec-once = /usr/bin/lxpolkit & #lx-session
+exec-once = systemctl --user start hyprpolkitagent
 exec-once = keymapper &
 
 #############################
@@ -71,12 +71,12 @@ env = XCURSOR_THEME,material-cursors
 general {
     gaps_in = 3
     gaps_out = 2
-    border_size = 2
+    border_size = 3
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
     #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.active_border = rgba(433f3cee) 
-    col.inactive_border = rgba(b1b1b1ee)
+    col.active_border = $color6
+    col.inactive_border = $color1
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
     resize_on_border = true
@@ -244,11 +244,9 @@ bind = $mainMod, Escape, killactive,
      bind = $mainMod , I, exec, grim -g "$(slurp)" - | magick - -shave 1x1 PNG:- | wl-copy
      bind = $mainMod SHIFT, I, exec, grim -g "$(slurp)" - | magick - -shave 1x1 PNG:- | swappy -f -
 
-# Volume Control with pactl
-     bindel = , XF86AudioLowerVolume, exec, pactl set-sink-volume 0 7%-
-     bindel = , XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +7%
-#bindel = , F6, exec, pactl set-sink-volume 0 -7%
-#bindel = , F7, exec, pactl set-sink-volume 0 +7%
+# Volume Control with wpctl
+     bindel = , F6, exec, wpctl set-volume @DEFAULT_SINK@ 0.07-
+     bindel = , F7, exec,wpctl set-volume @DEFAULT_SINK@ 0.07+
 
 # Binds to Reload
      bind = $mainMod SHIFT, W, exec, ~/.scripts/theme-all/setheme.sh
