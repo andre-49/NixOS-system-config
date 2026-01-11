@@ -87,10 +87,12 @@
       oh-my-zsh
       neovim
       yazi
-      hyprpolkitagent
+      #hyprpolkitagent
       wl-clipboard
       keyd
       grub2
+      os-prober
+      efibootmgr
 
 
 # Secondary
@@ -127,8 +129,7 @@
       gnome-themes-extra
       adwaita-qt
       hicolor-icon-theme 
+      polkit_gnome
 
-      os-prober
-      efibootmgr
       ];
 }

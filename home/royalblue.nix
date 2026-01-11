@@ -14,6 +14,7 @@
       ./royalblue/hyprlock.nix
       ./royalblue/pywalfox.nix
       ./royalblue/rofi.nix
+./royalblue/programming-env.nix
   ];
   home.file.".config/wal".source = ./royalblue/wal;
   home.file.".config/wlogout".source = ./royalblue/wlogout;

@@ -21,6 +21,7 @@ in
       extraGroups = [
         "wheel"
           "networkmanager"
+          "docker"
       ];
       uid = 1001;
       createHome = true;

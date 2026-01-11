@@ -47,7 +47,7 @@ $browser = firefox
 
 exec-once = $terminal
 exec-once = waybar &
-exec-once = systemctl --user start hyprpolkitagent
+exec-once = lxqt-policykit-agent &
 exec-once = keymapper &
 
 #############################
